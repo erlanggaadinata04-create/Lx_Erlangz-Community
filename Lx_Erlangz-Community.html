@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lx_Erlangz Community</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Rajdhani:wght@400;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .gaming-gradient {
+      background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    }
+
+    .neon-text {
+      text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+    }
+
+    .card-glow {
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .card-glow:hover {
+      box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
+      transform: translateY(-5px);
+    }
+
+    .scan-line {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scan-line::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.8), transparent);
+      animation: scan 3s infinite;
+    }
+
+    @keyframes scan {
+      0% { left: -100%; top: 0; }
+      50% { left: 100%; top: 50%; }
+      100% { left: -100%; top: 100%; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.5); }
+      50% { box-shadow: 0 0 40px rgba(139, 92, 246, 0.8); }
+    }
+
+    .pulse-glow {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+
+    .spinner {
+      border: 3px solid rgba(139, 92, 246, 0.3);
+      border-top: 3px solid #8b5cf6;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+    }
+
+    .toast {
+      animation: slideDown 0.3s ease-out;
+    }
+
+    .toast.hide {
+      animation: slideUp 0.3s ease-out;
+    }
+
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #8b5cf6, #ec4899);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+ </head>
+ <body class="h-full gaming-gradient text-white overflow-auto"><!-- Toast Notification -->
+  <div id="toast" class="hidden fixed top-6 left-1/2 transform -translate-x-1/2 z-50 px-6 py-4 rounded-lg shadow-lg" style="font-family: 'Rajdhani', sans-serif;"><span id="toast-message" class="font-bold"></span>
+  </div>
+  <div class="w-full min-h-full"><!-- Navigation -->
+   <nav class="w-full bg-black bg-opacity-50 backdrop-blur-md border-b border-purple-500/30 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+     <div class="flex items-center justify-center gap-8 flex-wrap"><a href="#home" class="nav-link text-lg font-bold hover:text-purple-400 transition-colors duration-300" style="font-family: 'Rajdhani', sans-serif;">🏠 Home</a> <a href="#map-creations" class="nav-link text-lg font-bold hover:text-purple-400 transition-colors duration-300" style="font-family: 'Rajdhani', sans-serif;">🗺️ Map Creations</a> <a href="#top-saweria" class="nav-link text-lg font-bold hover:text-purple-400 transition-colors duration-300" style="font-family: 'Rajdhani', sans-serif;">💎 Top Saweria</a>
+     </div>
+    </div>
+   </nav><!-- Header -->
+   <header id="home" class="w-full py-16 scan-line">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+     <h1 id="community-title" class="text-6xl md:text-8xl font-black neon-text mb-4" style="font-family: 'Orbitron', sans-serif;">Lx_Erlangz Community</h1>
+     <p id="tagline" class="text-xl md:text-2xl opacity-80" style="font-family: 'Rajdhani', sans-serif;">Gaming • Creating • Sharing</p>
+    </div>
+   </header><!-- Map Creations Section -->
+   <section id="map-creations" class="w-full py-16 px-6">
+    <div class="max-w-7xl mx-auto">
+     <div class="flex items-center justify-center mb-12">
+      <div class="h-px flex-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent"></div>
+      <h2 id="map-section-title" class="text-4xl md:text-5xl font-bold mx-6 neon-text" style="font-family: 'Orbitron', sans-serif;">Map Creations</h2>
+      <div class="h-px flex-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent"></div>
+     </div>
+     <div id="map-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Map cards will be added here -->
+     </div>
+     <div id="add-map-section" class="hidden mt-12 text-center"><button id="add-map-btn" class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 pulse-glow" style="font-family: 'Rajdhani', sans-serif;"> ➕ Tambah Map Baru </button>
+     </div>
+    </div>
+   </section><!-- Top Saweria Section -->
+   <section id="top-saweria" class="w-full py-16 px-6">
+    <div class="max-w-7xl mx-auto">
+     <div class="flex items-center justify-center mb-12">
+      <div class="h-px flex-1 bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
+      <h2 class="text-4xl md:text-5xl font-bold mx-6 neon-text" style="font-family: 'Orbitron', sans-serif; color: #fbbf24;">💎 Top Saweria</h2>
+      <div class="h-px flex-1 bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
+     </div>
+     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto"><!-- Top 1 -->
+      <div class="card-glow bg-gradient-to-br from-yellow-900 to-yellow-800 rounded-2xl p-6 border-4 border-yellow-400 transform hover:scale-105 transition-all duration-300">
+       <div class="text-center">
+        <div class="text-6xl mb-4">
+         🥇
+        </div>
+        <h3 class="text-3xl font-black mb-2" style="font-family: 'Orbitron', sans-serif;">TOP 1</h3>
+        <p class="text-xl font-bold mb-1" style="font-family: 'Rajdhani', sans-serif;">Username</p>
+        <p class="text-yellow-300 text-2xl font-bold" style="font-family: 'Rajdhani', sans-serif;">Rp 0</p>
+       </div>
+      </div><!-- Top 2 -->
+      <div class="card-glow bg-gradient-to-br from-gray-600 to-gray-700 rounded-2xl p-6 border-4 border-gray-400 transform hover:scale-105 transition-all duration-300">
+       <div class="text-center">
+        <div class="text-6xl mb-4">
+         🥈
+        </div>
+        <h3 class="text-3xl font-black mb-2" style="font-family: 'Orbitron', sans-serif;">TOP 2</h3>
+        <p class="text-xl font-bold mb-1" style="font-family: 'Rajdhani', sans-serif;">Username</p>
+        <p class="text-gray-300 text-2xl font-bold" style="font-family: 'Rajdhani', sans-serif;">Rp 0</p>
+       </div>
+      </div><!-- Top 3 -->
+      <div class="card-glow bg-gradient-to-br from-orange-800 to-orange-900 rounded-2xl p-6 border-4 border-orange-600 transform hover:scale-105 transition-all duration-300">
+       <div class="text-center">
+        <div class="text-6xl mb-4">
+         🥉
+        </div>
+        <h3 class="text-3xl font-black mb-2" style="font-family: 'Orbitron', sans-serif;">TOP 3</h3>
+        <p class="text-xl font-bold mb-1" style="font-family: 'Rajdhani', sans-serif;">Username</p>
+        <p class="text-orange-300 text-2xl font-bold" style="font-family: 'Rajdhani', sans-serif;">Rp 0</p>
+       </div>
+      </div>
+     </div>
+     <div class="mt-8 text-center">
+      <p class="text-gray-400 italic" style="font-family: 'Rajdhani', sans-serif;">Terima kasih untuk semua dukungan kalian! 🙏</p>
+     </div>
+    </div>
+   </section><!-- Roblox Profile Section -->
+   <section class="w-full py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+     <div class="flex items-center justify-center mb-12">
+      <div class="h-px flex-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent"></div>
+      <h2 id="roblox-section-title" class="text-4xl md:text-5xl font-bold mx-6 neon-text" style="font-family: 'Orbitron', sans-serif; color: #00d9ff;">Roblox Profile</h2>
+      <div class="h-px flex-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent"></div>
+     </div>
+     <div class="card-glow bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 border border-cyan-500 float-animation">
+      <div class="flex flex-col items-center justify-center space-y-6">
+       <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-cyan-400 shadow-lg"><img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-7B4F3AC2997A465FF25BCCB182F9323F-Png/150/150/AvatarHeadshot/Webp/noFilter" alt="Lx_Erlangz Avatar" loading="lazy" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'w-full h-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-6xl\'>🎮</div>';">
+       </div>
+       <div class="text-center">
+        <p class="text-2xl font-bold mb-2" style="font-family: 'Rajdhani', sans-serif;">Lx_Erlangz</p>
+        <p class="text-gray-400" style="font-family: 'Rajdhani', sans-serif;">Game Developer &amp; Creator</p>
+       </div><a href="https://www.roblox.com/share?code=203d521ada003441adaabf035c87fe23&amp;type=Profile&amp;source=ProfileShare&amp;stamp=" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-4 px-12 rounded-lg text-xl transition-all duration-300 transform hover:scale-105" style="font-family: 'Rajdhani', sans-serif;"> <span id="roblox-button-text">🚀 Visit My Profile</span> </a>
+      </div>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="w-full py-8 text-center border-t border-purple-500/30 mt-16">
+    <p class="opacity-60" style="font-family: 'Rajdhani', sans-serif;">© 2024 Lx_Erlangz Community. All Rights Reserved.</p>
+   </footer><!-- Add Map Modal -->
+   <div id="add-map-modal" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4">
+    <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 max-w-md w-full border border-purple-500 card-glow">
+     <h3 class="text-3xl font-bold mb-6 neon-text" style="font-family: 'Orbitron', sans-serif;">Tambah Map Baru</h3>
+     <form id="add-map-form" class="space-y-4">
+      <div><label class="block text-sm font-semibold mb-2" style="font-family: 'Rajdhani', sans-serif;">Nama Map</label> <input type="text" id="map-name" required class="w-full bg-gray-800 border border-purple-500 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-400" style="font-family: 'Rajdhani', sans-serif;" placeholder="Contoh: Zombie Survival">
+      </div>
+      <div><label class="block text-sm font-semibold mb-2" style="font-family: 'Rajdhani', sans-serif;">Link Game</label> <input type="url" id="map-link" required class="w-full bg-gray-800 border border-purple-500 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-400" style="font-family: 'Rajdhani', sans-serif;" placeholder="https://...">
+      </div>
+      <div><label class="block text-sm font-semibold mb-2" style="font-family: 'Rajdhani', sans-serif;">URL Gambar Icon</label> <input type="url" id="map-emoji" class="w-full bg-gray-800 border border-purple-500 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-purple-400" style="font-family: 'Rajdhani', sans-serif;" placeholder="https://...">
+      </div>
+      <div id="error-message" class="hidden bg-red-900/50 border border-red-500 rounded-lg p-3 text-sm" style="font-family: 'Rajdhani', sans-serif;"></div>
+      <div class="flex gap-4 mt-6"><button type="submit" id="submit-btn" class="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center" style="font-family: 'Rajdhani', sans-serif;"> <span id="submit-text">Tambah</span>
+        <div id="submit-spinner" class="spinner hidden ml-2"></div></button> <button type="button" id="cancel-btn" class="flex-1 bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300" style="font-family: 'Rajdhani', sans-serif;"> Batal </button>
+      </div>
+     </form>
+    </div>
+   </div><!-- Delete Confirmation -->
+   <div id="delete-modal" class="hidden fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4">
+    <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 max-w-md w-full border border-red-500 card-glow">
+     <h3 class="text-2xl font-bold mb-4 text-red-500" style="font-family: 'Orbitron', sans-serif;">🗑️ Hapus Map?</h3>
+     <p class="mb-6 opacity-80" style="font-family: 'Rajdhani', sans-serif;">Kamu yakin ingin menghapus map ini? Tindakan ini tidak bisa dibatalkan.</p>
+     <div class="flex gap-4"><button id="confirm-delete-btn" class="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center" style="font-family: 'Rajdhani', sans-serif;"> <span id="delete-text">Ya, Hapus</span>
+       <div id="delete-spinner" class="spinner hidden ml-2"></div></button> <button id="cancel-delete-btn" class="flex-1 bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300" style="font-family: 'Rajdhani', sans-serif;"> Batal </button>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      community_title: "Lx_Erlangz Community",
+      tagline: "Gaming • Creating • Sharing",
+      map_section_title: "Map Creations",
+      roblox_section_title: "Roblox Profile",
+      roblox_button_text: "🚀 Visit My Profile",
+      background_color: "#0f0c29",
+      surface_color: "#1f1b3d",
+      text_color: "#ffffff",
+      primary_action_color: "#8b5cf6",
+      secondary_action_color: "#00d9ff",
+      font_family: "Rajdhani",
+      font_size: 16
+    };
+
+    let allMaps = [];
+    let mapToDelete = null;
+    let isAdmin = false;
+    let typedCode = '';
+    const secretCode = 'ERLANGZ';
+
+    function showToast(message, isSuccess = true) {
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toast-message');
+      
+      toastMessage.textContent = message;
+      toast.className = `toast fixed top-6 left-1/2 transform -translate-x-1/2 z-50 px-6 py-4 rounded-lg shadow-lg ${isSuccess ? 'bg-green-600' : 'bg-red-600'}`;
+      
+      setTimeout(() => {
+        toast.classList.add('hide');
+        setTimeout(() => {
+          toast.className = 'hidden';
+        }, 300);
+      }, 3000);
+    }
+
+    function checkAdminCode(key) {
+      typedCode += key.toUpperCase();
+      
+      if (typedCode.length > secretCode.length) {
+        typedCode = typedCode.slice(-secretCode.length);
+      }
+      
+      if (typedCode === secretCode && !isAdmin) {
+        isAdmin = true;
+        document.getElementById('add-map-section').classList.remove('hidden');
+        showToast('Admin Mode Aktif! ✅', true);
+        renderMaps();
+      }
+    }
+
+    document.addEventListener('keypress', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+        return;
+      }
+      checkAdminCode(e.key);
+    });
+
+    function renderMaps() {
+      const container = document.getElementById('map-container');
+      
+      if (allMaps.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full text-center py-16">
+            <p class="text-2xl opacity-60" style="font-family: 'Rajdhani', sans-serif;">Belum ada map. ${isAdmin ? 'Klik tombol di bawah untuk menambah!' : ''}</p>
+          </div>
+        `;
+        return;
+      }
+
+      const existingCards = new Map(
+        [...container.children].map(el => [el.dataset.mapId, el])
+      );
+
+      const newContainer = document.createElement('div');
+      newContainer.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8';
+
+      allMaps.forEach((map) => {
+        const mapId = map.__backendId;
+        
+        if (existingCards.has(mapId)) {
+          const existingCard = existingCards.get(mapId);
+          existingCard.querySelector('.map-name').textContent = map.name;
+          existingCard.querySelector('.map-link').href = map.link;
+          
+          const iconContainer = existingCard.querySelector('.map-icon-container');
+          if (map.emoji) {
+            iconContainer.innerHTML = `<img src="${map.emoji}" alt="${map.name}" loading="lazy" class="w-full h-full object-cover rounded-xl" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\\'text-8xl\\'>🗺️</span>';">`;
+          } else {
+            iconContainer.innerHTML = `<span class="text-8xl">🗺️</span>`;
+          }
+          
+          const deleteBtn = existingCard.querySelector('.delete-btn');
+          if (isAdmin) {
+            deleteBtn.cl#80FF00assList.remove('hidden');
+          } else {
+            deleteBtn.classList.add('hidden');
+          }
+          
+          newContainer.appendChild(existingCard);
+          existingCards.delete(mapId);
+        } else {
+          const card = document.createElement('div');
+          card.className = 'card-glow bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl overflow-hidden border border-purple-500 transition-all duration-300';
+          card.dataset.mapId = mapId;
+          const iconContent = map.emoji 
+            ? `<img src="${map.emoji}" alt="${map.name}" loading="lazy" class="w-full h-full object-cover rounded-xl" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=\\'text-8xl\\'>🗺️</span>';">`
+            : `<span class="text-8xl">🗺️</span>`;
+          
+          card.innerHTML = `
+            <div class="p-6">
+              <div class="map-icon-container w-full h-48 bg-gradient-to-br from-purple-900 to-pink-900 rounded-xl flex items-center justify-center mb-4 overflow-hidden">
+                ${iconContent}
+              </div>
+              <h3 class="map-name text-2xl font-bold mb-3 truncate" style="font-family: 'Orbitron', sans-serif;">${map.name}</h3>
+              <div class="flex gap-2">
+                <a href="${map.link}" target="_blank" rel="noopener noreferrer" class="map-link flex-1 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-3 px-4 rounded-lg text-center transition-all duration-300" style="font-family: 'Rajdhani', sans-serif;">
+                  ▶️ Play
+                </a>
+                <button class="delete-btn ${isAdmin ? '' : 'hidden'} bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-4 rounded-lg transition-all duration-300" style="font-family: 'Rajdhani', sans-serif;">
+                  🗑️
+                </button>
+              </div>
+            </
